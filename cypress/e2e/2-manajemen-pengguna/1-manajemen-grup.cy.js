@@ -2,6 +2,10 @@
 
 describe('Group management', () => {
     before(() => {
+        cy.visit('https://staging72.ecampuz.com/app/develop-v.3/eregistrasi/', {auth: {
+            username: 'saasku',
+            password: 'sang2022it'
+        }})
         Cypress.on('uncaught:exception', (err, runnable) => {
             // returning false here prevents Cypress from
             // failing the test
@@ -9,11 +13,8 @@ describe('Group management', () => {
         })
     })
 
-    it('Create a group name', () => {
-        cy.visit('https://staging72.ecampuz.com/app/develop-v.3/eregistrasi/', {auth: {
-            username: 'saasku',
-            password: 'sang2022it'
-        }})
+    it.only('Create a group name', () => {
+        
         cy.fixture("login-with-valid-credential").then(user => {
             const username = user.username
             const password = user.password
@@ -30,8 +31,8 @@ describe('Group management', () => {
 
             // Isikan nama grup, deskripsi, unit kerja, dan hak akses
             // cy.get('input[name="groupname"]').type('Automate Group')
-            cy.get(':nth-child(2) > .col-sm-8 > #combo_group > .form-control').type('Automation Group')
-            cy.get(':nth-child(3) > .col-sm-8 > #combo_group > .form-control').type('Ini adalah nama grup yang dibuat melalui automation testing')
+            cy.get(':nth-child(2) > .col-sm-8 > #combo_group > .form-control').type('Admin FIB')
+            cy.get(':nth-child(3) > .col-sm-8 > #combo_group > .form-control').type('Ini adalah nama grup yang dibuat untuk melayani kegiatan akademik di FIB')
             cy.get('.col-sm-8 > .form-control').select(1)
             // cy.get('[type="checkbox"]').check({force: true})
             cy.get('[type="checkbox"]').check(['64', '42', '81', '1', '38', '52', '5', '32', '105'])
@@ -40,10 +41,7 @@ describe('Group management', () => {
     })
 
     it('Edit the description of a group name', () => {
-        cy.visit('https://staging72.ecampuz.com/app/develop-v.3/eregistrasi/', {auth: {
-            username: 'saasku',
-            password: 'sang2022it'
-        }})
+        
         cy.fixture("login-with-valid-credential").then(user => {
             const username = user.username
             const password = user.password
@@ -62,11 +60,9 @@ describe('Group management', () => {
         })
     })
 
+    // Menghapus field nama grup
     it('Delete a group name', () => {
-        cy.visit('https://staging72.ecampuz.com/app/develop-v.3/eregistrasi/', {auth: {
-            username: 'saasku',
-            password: 'sang2022it'
-        }})
+        
         cy.fixture("login-with-valid-credential").then(user => {
             const username = user.username
             const password = user.password
@@ -86,10 +82,7 @@ describe('Group management', () => {
     })
 
     it('Uncheck an access right from Ubah Grup menu', () => {
-        cy.visit('https://staging72.ecampuz.com/app/develop-v.3/eregistrasi/', {auth: {
-            username: 'saasku',
-            password: 'sang2022it'
-        }})
+        
         cy.fixture("login-with-valid-credential").then(user => {
             const username = user.username
             const password = user.password
@@ -98,7 +91,7 @@ describe('Group management', () => {
 
             cy.get('body')
 
-            // Hapus nama grup
+            // Hapus checklist salah satu hak akses di grup menu
             cy.get(':nth-child(2) > [href="#"] > .px-nav-label').click() // klik dropdown-menu Manajemen Prngguna
             cy.get('.px-open > .px-nav-dropdown-menu > :nth-child(1) > .xhr > .px-nav-label').click() // klik submenu grup
             cy.get(':nth-child(2) > .links > .btn-warning').click() // klik tombol Edit
@@ -109,10 +102,7 @@ describe('Group management', () => {
     })
 
     it('Edit a group name', () => {
-        cy.visit('https://staging72.ecampuz.com/app/develop-v.3/eregistrasi/', {auth: {
-            username: 'saasku',
-            password: 'sang2022it'
-        }})
+        
         cy.fixture("login-with-valid-credential").then(user => {
             const username = user.username
             const password = user.password
@@ -121,7 +111,7 @@ describe('Group management', () => {
 
             cy.get('body')
 
-            // Hapus nama grup
+            // Sunting salah satu nama grup
             cy.get(':nth-child(2) > [href="#"] > .px-nav-label').click() // klik dropdown-menu Manajemen Prngguna
             cy.get('.px-open > .px-nav-dropdown-menu > :nth-child(1) > .xhr > .px-nav-label').click() // klik submenu grup
             cy.get(':nth-child(2) > .links > .btn-warning').click() // klik tombol Edit
@@ -131,11 +121,8 @@ describe('Group management', () => {
         })
     })
 
-    it.only('Undo Delete a group name', () => {
-        cy.visit('https://staging72.ecampuz.com/app/develop-v.3/eregistrasi/', {auth: {
-            username: 'saasku',
-            password: 'sang2022it'
-        }})
+    it('Undo Delete a group name', () => {
+        
         cy.fixture("login-with-valid-credential").then(user => {
             const username = user.username
             const password = user.password
@@ -155,11 +142,8 @@ describe('Group management', () => {
         })
     })
 
-    it('Delete a group name', () => {
-        cy.visit('https://staging72.ecampuz.com/app/develop-v.3/eregistrasi/', {auth: {
-            username: 'saasku',
-            password: 'sang2022it'
-        }})
+    it('Delete a group', () => {
+        
         cy.fixture("login-with-valid-credential").then(user => {
             const username = user.username
             const password = user.password
@@ -168,7 +152,7 @@ describe('Group management', () => {
 
             cy.get('body')
 
-            // Batal hapus nama grup
+            // Hapus nama grup
             cy.get(':nth-child(2) > [href="#"] > .px-nav-label').click() // klik dropdown-menu Manajemen Prngguna
             cy.get('.px-open > .px-nav-dropdown-menu > :nth-child(1) > .xhr > .px-nav-label').click() // klik submenu grup
             cy.get(':nth-child(2) > .links > .btn-danger > .fa').click() // klik tombol Hapus pada Automation Group
