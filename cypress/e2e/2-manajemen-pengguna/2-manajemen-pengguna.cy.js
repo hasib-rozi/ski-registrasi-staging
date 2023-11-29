@@ -187,7 +187,7 @@ describe('User management', () => {
     })
 
     // Menghapus field nama pengguna
-    it('Delete an username in username field', () => {
+    it('Delete an username in the username field', () => {
         
         cy.fixture("login-with-valid-credential").then(user => {
             const username = user.username
@@ -211,8 +211,48 @@ describe('User management', () => {
         })
     })
 
+    // Cari nama pengguna di field Nama Pengguna
+    it('Searching an username in the username field', () => {
+        
+        cy.fixture("login-with-valid-credential").then(user => {
+            const username = user.username
+            const password = user.password
+
+            cy.LoginWithValidCredential(username, password)
+
+            cy.get('body')
+
+            // Masuk menu grup
+            cy.get(':nth-child(2) > [href="#"] > .px-nav-label').click() // klik dropdown-menu Manajemen Prngguna
+            cy.get('.px-open > .px-nav-dropdown-menu > :nth-child(2) > .xhr > .px-nav-label').click() // klik submenu grup
+            cy.get(':nth-child(1) > .col-sm-8 > .form-control').type('rosa') // ketikkan nama rosa di field Nama Pengguna
+            cy.contains('Tampilkan').click()
+            cy.get('h1').and('contain', 'Manajemen Pengguna') // assertion
+        })
+    })
+
+    // Cari nama pengguna di field Nama Asli
+    it.only('Searching an username in the username field', () => {
+        
+        cy.fixture("login-with-valid-credential").then(user => {
+            const username = user.username
+            const password = user.password
+
+            cy.LoginWithValidCredential(username, password)
+
+            cy.get('body')
+
+            // Masuk menu grup
+            cy.get(':nth-child(2) > [href="#"] > .px-nav-label').click() // klik dropdown-menu Manajemen Prngguna
+            cy.get('.px-open > .px-nav-dropdown-menu > :nth-child(2) > .xhr > .px-nav-label').click() // klik submenu grup
+            cy.get(':nth-child(2) > .col-sm-8 > .form-control').type('Hasib') // ketikkan nama rosa di field Nama Pengguna
+            cy.contains('Tampilkan').click()
+            cy.get('h1').and('contain', 'Manajemen Pengguna') // assertion
+        })
+    })
+
     // Hapus pengguna
-    it.only('Delete an username', () => {
+    it('Delete an username', () => {
         
         cy.fixture("login-with-valid-credential").then(user => {
             const username = user.username

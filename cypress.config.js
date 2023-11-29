@@ -1,4 +1,5 @@
 const { defineConfig } = require("cypress");
+const { verifyDownloadTasks } = require('cy-verify-downloads');
 
 const execa = require('execa')
 const findBrowser = () => {
@@ -27,6 +28,7 @@ module.exports = defineConfig({
   chromeWebSecurity: false,
   e2e: {
     setupNodeEvents(on, config) {
+      on('task', verifyDownloadTasks)
       return findBrowser().then((browser) => {
         return {
           browsers: config.browsers.concat(browser),

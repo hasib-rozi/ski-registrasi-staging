@@ -82,7 +82,7 @@ describe('Registration Management', () => {
     })
 
     // Batal hapus periode semester
-    it('Undo delete active period', () => {
+    it.only('Undo delete active period', () => {
         
         cy.fixture("login-with-valid-credential").then(user => {
             const username = user.username
@@ -105,7 +105,7 @@ describe('Registration Management', () => {
     })
 
     // Hapus periode semester
-    it.only('Delete active period', () => {
+    it('Delete active period', () => {
         
         cy.fixture("login-with-valid-credential").then(user => {
             const username = user.username

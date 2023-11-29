@@ -1,6 +1,6 @@
 /// <reference types="Cypress" />
 
-describe('Opens login page', () => {
+describe('Login to dashboard', () => {
     before(() => {
         cy.visit('https://staging72.ecampuz.com/app/develop-v.3/eregistrasi/', {auth: {
             username: 'saasku',
@@ -27,7 +27,7 @@ describe('Opens login page', () => {
     })
 
     // Login dengan username salah dan password benar
-    it.only('Login with invalid username and valid password', () => {
+    it('Login with invalid username and valid password', () => {
         
         cy.fixture("login-with-valid-password").then(user => {
             const username = user.username
@@ -40,7 +40,20 @@ describe('Opens login page', () => {
     })
 
     // Login dengan username benar dan password salah
-    it('Login with valid username and invalid password', () => {
+    it.only('Login with valid username and invalid password', () => {
+        
+        cy.fixture("login-with-valid-username").then(user => {
+            const username = user.username
+            const password = user.password
+
+            cy.LoginWithValidUsername(username, password)
+
+            cy.get('.alert').should('be.visible').and('contain', 'Proses login tidak berhasil, Isi dengan benar Username dan Password, dan Centang Isian Captcha untuk Kelengkapan Validasi.')
+        })
+    })
+
+    // Login dengan menampilkan password
+    it('Login with showing the password', () => {
         
         cy.fixture("login-with-valid-username").then(user => {
             const username = user.username
