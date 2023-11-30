@@ -47,3 +47,12 @@ Cypress.Commands.add('LoginWithValidPassword', (username, password) => {
     cy.get('#password').type(password, {force: true})
     cy.contains('LOGIN').click()
 })
+
+Cypress.Commands.add('LoginWithEyePass', (username, password) => {
+    cy.get('#username').clear
+    cy.get('#username').type(username, {force: true})
+    cy.get('#password').clear
+    cy.get('#eyepass').click()
+    cy.get('#password').type(password, {force: true})
+    cy.contains('LOGIN').click()
+})

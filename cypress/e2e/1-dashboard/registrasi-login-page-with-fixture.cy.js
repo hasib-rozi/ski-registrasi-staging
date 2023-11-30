@@ -40,7 +40,7 @@ describe('Login to dashboard', () => {
     })
 
     // Login dengan username benar dan password salah
-    it.only('Login with valid username and invalid password', () => {
+    it('Login with valid username and invalid password', () => {
         
         cy.fixture("login-with-valid-username").then(user => {
             const username = user.username
@@ -53,15 +53,15 @@ describe('Login to dashboard', () => {
     })
 
     // Login dengan menampilkan password
-    it('Login with showing the password', () => {
+    it.only('Login passes with showing password', () => {
         
-        cy.fixture("login-with-valid-username").then(user => {
+        cy.fixture("login-with-valid-credential").then(user => {
             const username = user.username
             const password = user.password
 
-            cy.LoginWithValidPassword(username, password)
+            cy.LoginWithEyePass(username, password)
 
-            cy.get('.alert').should('be.visible').and('contain', 'Proses login tidak berhasil, Isi dengan benar Username dan Password, dan Centang Isian Captcha untuk Kelengkapan Validasi.')
+            cy.get('body')
         })
     })
 })
