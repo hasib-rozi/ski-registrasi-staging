@@ -1,6 +1,6 @@
 /// <reference types="Cypress" />
 
-describe('User management', () => {
+describe('Manajemen Pengguna', () => {
     before(() => {
         cy.visit('https://staging72.ecampuz.com/app/develop-v.3/eregistrasi/', {auth: {
             username: 'saasku',

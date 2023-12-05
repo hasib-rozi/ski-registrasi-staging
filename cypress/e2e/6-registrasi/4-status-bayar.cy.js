@@ -1,6 +1,6 @@
 /// <reference types="Cypress" />
 
-describe('Status Bayar', () => {
+describe('Manajemen Status Bayar', () => {
     before(() => {
         cy.visit('https://staging72.ecampuz.com/app/develop-v.3/eregistrasi/', {auth: {
             username: 'saasku',
