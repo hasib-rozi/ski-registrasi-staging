@@ -1,3 +1,5 @@
+import 'cypress-file-upload'
+
 // ***********************************************
 // This example commands.js shows you how to
 // create various custom commands and overwrite
@@ -23,6 +25,10 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
+Cypress.Commands.add('uploadFile', (selector, fileName, fileType) => {
+    return cy.get(selector).attachFile({ filePath: fileName, fileType })
+})
 
 Cypress.Commands.add('LoginWithValidCredential', (username, password) => {
     cy.get('#username').clear
