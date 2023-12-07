@@ -1,6 +1,6 @@
 /// <reference types="Cypress" />
 
-describe('File Panduan', () => {
+describe('Manajemen File Panduan', () => {
     before(() => {
         cy.visit('https://staging72.ecampuz.com/app/develop-v.3/eregistrasi/', {auth: {
             username: 'saasku',
@@ -25,7 +25,7 @@ describe('File Panduan', () => {
 
             cy.get(':nth-child(7) > [href="#"] > .px-nav-label').click() // klik menu Admisi
             cy.get('.px-open > .px-nav-dropdown-menu > :nth-child(1) > .xhr > .px-nav-label').click() // klik sub menu File Panduan
-            cy.get('h1').and('contain', 'File Panduan') // assertion bahwa elemen h1 mengandung tulisan File Panduan
+            cy.get('h1').and('contain', 'File Panduan') // assertion bahwa elemen h1 memuat tulisan File Panduan
         })
     })
 
@@ -41,7 +41,7 @@ describe('File Panduan', () => {
 
             cy.get(':nth-child(7) > [href="#"] > .px-nav-label').click() // klik menu Admisi
             cy.get('.px-open > .px-nav-dropdown-menu > :nth-child(1) > .xhr > .px-nav-label').click() // klik sub menu File Panduan
-            cy.get('h1').and('contain', 'File Panduan') // assertion bahwa elemen h1 mengandung tulisan File Panduan
+            cy.get('h1').and('contain', 'File Panduan') // assertion bahwa elemen h1 memuat tulisan File Panduan
 
             cy.contains('Tambah').click()
             cy.get('.form-control').type('Test upload file menggunakan Cypress kesekian') // Input nama di field Nama File
@@ -70,34 +70,6 @@ describe('File Panduan', () => {
             cy.contains('Simpan').click()
         })
     })
-
-    // it.only('Add File Panduan', () => {
-    //     Cypress.on('uncaught:exception', (err, runnable) => {
-    //       // cy.log(err);
-    //       return false
-    //     });
-    //     cy.wait(Cypress.env('waiting_timeout'));
-    //     cy.get('[title="Tambah Data File Panduan"]').click();
-    //     cy.wait(Cypress.env('waiting_timeout'));
-    
-    //     cy.fixture('Test.pdf', 'base64').then(fileContent => {
-    //       cy.get('input[type="file"]').upload(
-    //         {
-    //           fileContent,
-    //           fileName: 'Test.pdf',
-    //           mimeType: 'application/json'
-    //         }, { subjectType: 'input' },
-    //       );
-    //     });
-    
-    
-    //     let name = 'Panduan ' + new Date().getTime();
-    //     panduanName = name;
-    //     cy.get('[name="name"]').type(name);
-    //     cy.get('#form-input [name="submit"]').click();
-    //     cy.wait(Cypress.env('waiting_timeout'));
-    //     cy.get('#subcontent-element').should('contain', 'Penambahan Data Berhasil Dilakukan');
-    //   });
     
 
     // Menambahkan File Panduan baru dengan ukuran melebihi 2 MB == skip
@@ -112,7 +84,7 @@ describe('File Panduan', () => {
 
             cy.get(':nth-child(7) > [href="#"] > .px-nav-label').click() // klik menu Admisi
             cy.get('.px-open > .px-nav-dropdown-menu > :nth-child(1) > .xhr > .px-nav-label').click() // klik sub menu File Panduan
-            cy.get('h1').and('contain', 'File Panduan') // assertion bahwa elemen h1 mengandung tulisan File Panduan
+            cy.get('h1').and('contain', 'File Panduan') // assertion bahwa elemen h1 memuat tulisan File Panduan
 
             cy.contains('Tambah').click()
             cy.get('.form-control').type('Test') // Input nama di field Nama File
