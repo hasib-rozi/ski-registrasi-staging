@@ -14,7 +14,7 @@ describe('Manajemen Jalur', () => {
     })
 
     // Mencari data jalur berdasarkan periode Ganjil 2023/2024 gelombang II
-    it('Mencari Mencari data jalur berdasarkan periode Ganjil 2023/2024 gelombang II', () => {
+    it('Search for path data based on a specific period', () => {
         cy.fixture("login-with-valid-credential").then(user => {
             const username = user.username
             const password = user.password
@@ -34,7 +34,7 @@ describe('Manajemen Jalur', () => {
     })
 
     // Mencari data jalur yang datanya kosong
-    it.only('Mencari Mencari data jalur yang datanya kosong', () => {
+    it.only('Search for empty data', () => {
         cy.fixture("login-with-valid-credential").then(user => {
             const username = user.username
             const password = user.password
@@ -56,7 +56,7 @@ describe('Manajemen Jalur', () => {
     })
 
     // Menambahkan data jalur baru -> periode Ganjil 2023/2024 Gelombang VII kelompok IPS 
-    it('menambahkan data jalur baru', () => {
+    it('Should adding a new data', () => {
         cy.fixture("login-with-valid-credential").then(user => {
             const username = user.username
             const password = user.password
@@ -86,7 +86,7 @@ describe('Manajemen Jalur', () => {
     })
 
     // Menambahkan data jalur yang sudah ada 
-    it('Tambah data jalur yang sudah ada', () => {
+    it('Add with existing data', () => {
         cy.fixture("login-with-valid-credential").then(user => {
             const username = user.username
             const password = user.password

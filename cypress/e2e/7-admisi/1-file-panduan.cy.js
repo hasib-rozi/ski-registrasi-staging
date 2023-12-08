@@ -29,7 +29,7 @@ describe('Manajemen File Panduan', () => {
         })
     })
 
-    // Menambahkan File Panduan baru = tidak menampilkan laman setelah simpan file
+    // SKIPP!! Menambahkan File Panduan baru = tidak menampilkan laman setelah simpan file/hanya menampilkan respons saja
     it('Adding a new guide file', () => {
         cy.fixture("login-with-valid-credential").then(user => {
             const username = user.username
@@ -72,7 +72,7 @@ describe('Manajemen File Panduan', () => {
     })
     
 
-    // Menambahkan File Panduan baru dengan ukuran melebihi 2 MB == skip
+    // SKIP!! Menambahkan File Panduan baru dengan ukuran melebihi 2 MB
     it('Adding a new file which contains > 2 MB size file', () => {
         cy.fixture("login-with-valid-credential").then(user => {
             const username = user.username
@@ -95,7 +95,7 @@ describe('Manajemen File Panduan', () => {
     })
 
     // Mengubah nama salah satu file
-    it('Adding a new guide file', () => {
+    it('Rename a file', () => {
         cy.fixture("login-with-valid-credential").then(user => {
             const username = user.username
             const password = user.password
@@ -104,12 +104,11 @@ describe('Manajemen File Panduan', () => {
 
             cy.get('body')
 
-            cy.get(':nth-child(7) > [href="#"] > .px-nav-label').click() // klik menu Registrasi
+            cy.get(':nth-child(7) > [href="#"] > .px-nav-label').click() // klik menu Admisi
             cy.get('.px-open > .px-nav-dropdown-menu > :nth-child(1) > .xhr > .px-nav-label').click() // klik sub menu File Panduan
             cy.get('h1').and('contain', 'File Panduan') // assertion bahwa elemen h1 mengandung tulisan File Panduan
 
             cy.get(':nth-child(1) > .links > .btn-warning').click() // klik ikon pensil pada file paling atas
-            // cy.get('.panel-title').should('have.text', ' Ubah File Panduan')
             cy.get('.panel-title').and('contain', 'Ubah File Panduan') // assertion bahwa ada elemen yang memuat tulisan "Ubah File Panduan"
             cy.get('.form-control').clear().type('Test upload pakai Cypress')
             cy.contains('Simpan').click()
@@ -117,7 +116,7 @@ describe('Manajemen File Panduan', () => {
     })
 
     // Checklist salah satu file panduan
-    it('Opens File Panduan sub menu', () => {
+    it.only('Check an file', () => {
         cy.fixture("login-with-valid-credential").then(user => {
             const username = user.username
             const password = user.password
@@ -126,17 +125,15 @@ describe('Manajemen File Panduan', () => {
 
             cy.get('body')
 
-            cy.get(':nth-child(7) > [href="#"] > .px-nav-label').click() // klik menu Registrasi
+            cy.get(':nth-child(7) > [href="#"] > .px-nav-label').click() // klik menu Admisi
             cy.get('.px-open > .px-nav-dropdown-menu > :nth-child(1) > .xhr > .px-nav-label').click() // klik sub menu File Panduan
-            cy.get('h1').should('have.text', 'File Panduan') // assertion bahwa elemen h1 mengandung tulisan File Panduan
+            cy.get('h1').should('have.text', 'File Panduan') // assertion bahwa elemen h1 memuat tulisan File Panduan
 
-            // cy.get(':nth-child(1) > :nth-child(3) > .change-status > img').click() // ceklis status aktif file panduan
-            cy.get(':nth-child(1) > .links > .btn-danger').click()
-            cy.get('h2').contains('Menghapus File Panduan')
+            cy.get(':nth-child(1) > :nth-child(3) > .change-status > img').click() // ceklis status aktif file panduan
         })
     })
 
-    // Unggah file Excel ke File Panduan
+    // SKIPP!! Unggah file Excel ke File Panduan = memuat respons saja
     it('Adding an Excel file', () => {
         cy.fixture("login-with-valid-credential").then(user => {
             const username = user.username
@@ -170,7 +167,7 @@ describe('Manajemen File Panduan', () => {
     })
 
     // Menghapus salah satu file panduan
-    it.only('Adding a new guide file', () => {
+    it('Delete a new guide file', () => {
         cy.fixture("login-with-valid-credential").then(user => {
             const username = user.username
             const password = user.password

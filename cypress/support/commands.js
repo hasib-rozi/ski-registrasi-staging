@@ -35,6 +35,12 @@ Cypress.Commands.add('LoginWithValidCredential', (username, password) => {
     cy.get('#username').type(username, {force: true})
     cy.get('#password').clear
     cy.get('#password').type(password, {force: true})
+    cy.get('iframe[src*=recaptcha]').then(($iframe) => {
+        const iframeDocument = $iframe.contents();
+        const recaptchaToken = iframeDocument.find('#recaptcha-token');
+        cy.wait(15000)
+        recaptchaToken.click();
+    });
     cy.contains('LOGIN').click()
 })
 

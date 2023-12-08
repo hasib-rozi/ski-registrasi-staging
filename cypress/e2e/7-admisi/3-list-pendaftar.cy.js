@@ -29,7 +29,7 @@ describe('Manajemen List Pendaftar', () => {
         })
     })
 
-    // Mencari data manajemen kelompok ujian periode Ganjil 2023/2024 gelombang I
+    // Mencari data list pendaftar berdasarkan filter tertentu
     it.only('Searching from applicants based on specific filter', () => {
         cy.fixture("login-with-valid-credential").then(user => {
             const username = user.username
