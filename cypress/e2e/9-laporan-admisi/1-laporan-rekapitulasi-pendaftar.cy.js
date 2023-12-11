@@ -1,6 +1,6 @@
 /// <reference types="Cypress" />
 
-describe('Manajemen Pewawancara', () => {
+describe('Manajemen Laporan Rekapitulasi Pendaftar', () => {
     before(() => {
         cy.visit('https://staging72.ecampuz.com/app/develop-v.3/eregistrasi/', {auth: {
             username: 'saasku',
@@ -13,8 +13,8 @@ describe('Manajemen Pewawancara', () => {
         })
     })
 
-    // Membuka halaman sub menu Pewawancara
-    it.only('Opens Pewawancara page', () => {
+    // Membuka halaman sub menu Kontak
+    it.only('Opens Applicant Recap Report page', () => {
         cy.fixture("login-with-valid-credential").then(user => {
             const username = user.username
             const password = user.password
@@ -23,9 +23,9 @@ describe('Manajemen Pewawancara', () => {
 
             cy.get('body')
 
-            cy.get(':nth-child(7) > [href="#"] > .px-nav-label').click() // klik menu Admisi
-            cy.get('.px-open > .px-nav-dropdown-menu > :nth-child(11) > .xhr > .px-nav-label').click() // klik sub menu Pewawancara
-            cy.get('h1').and('contain', 'Manajemen Pewawancara') // assertion bahwa elemen h1 memuat tulisan Manajemen Pewawancara
+            cy.get(':nth-child(9) > [href="#"] > .px-nav-label').click() // klik menu Laporan Admisi
+            cy.get('.px-open > .px-nav-dropdown-menu > :nth-child(1) > .xhr > .px-nav-label').click() // klik sub menu Pengawas Ujian
+            cy.get('h1').and('contain', 'Laporan Rekapitulasi Pendaftar') // assertion bahwa elemen h1 memuat tulisan Manajemen Pengawas Ujian
         })
     })
 

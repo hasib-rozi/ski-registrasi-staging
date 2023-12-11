@@ -1,6 +1,6 @@
-/// <reference types="Cypress" />
+// <reference types="Cypress" />
 
-describe('Manajemen Pewawancara', () => {
+describe('Manajemen Wawancara', () => {
     before(() => {
         cy.visit('https://staging72.ecampuz.com/app/develop-v.3/eregistrasi/', {auth: {
             username: 'saasku',
@@ -13,8 +13,8 @@ describe('Manajemen Pewawancara', () => {
         })
     })
 
-    // Membuka halaman sub menu Pewawancara
-    it.only('Opens Pewawancara page', () => {
+    // Membuka halaman sub menu Wawancara
+    it.only('Opens Wawancara page', () => {
         cy.fixture("login-with-valid-credential").then(user => {
             const username = user.username
             const password = user.password
@@ -24,8 +24,8 @@ describe('Manajemen Pewawancara', () => {
             cy.get('body')
 
             cy.get(':nth-child(7) > [href="#"] > .px-nav-label').click() // klik menu Admisi
-            cy.get('.px-open > .px-nav-dropdown-menu > :nth-child(11) > .xhr > .px-nav-label').click() // klik sub menu Pewawancara
-            cy.get('h1').and('contain', 'Manajemen Pewawancara') // assertion bahwa elemen h1 memuat tulisan Manajemen Pewawancara
+            cy.get('.px-open > .px-nav-dropdown-menu > :nth-child(10) > .xhr > .px-nav-label').click() // klik sub menu Wawancara
+            cy.get('h1').and('contain', 'Manajemen Wawancara') // assertion bahwa elemen h1 memuat tulisan Manajemen Wawancara
         })
     })
 
