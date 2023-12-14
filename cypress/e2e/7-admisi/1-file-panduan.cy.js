@@ -73,7 +73,7 @@ describe('Manajemen File Panduan', () => {
     
 
     // SKIP!! Menambahkan File Panduan baru dengan ukuran melebihi 2 MB
-    it('Adding a new file which contains > 2 MB size file', () => {
+    it.only('Adding a new file which contains > 2 MB size file', () => {
         cy.fixture("login-with-valid-credential").then(user => {
             const username = user.username
             const password = user.password
@@ -116,7 +116,7 @@ describe('Manajemen File Panduan', () => {
     })
 
     // Checklist salah satu file panduan
-    it.only('Check an file', () => {
+    it('Check an file', () => {
         cy.fixture("login-with-valid-credential").then(user => {
             const username = user.username
             const password = user.password

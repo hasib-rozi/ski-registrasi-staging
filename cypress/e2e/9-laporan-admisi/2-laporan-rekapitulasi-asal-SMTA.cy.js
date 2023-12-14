@@ -25,7 +25,7 @@ describe('Manajemen Laporan Rekapitulasi Asal SMTA', () => {
 
             cy.get(':nth-child(9) > [href="#"] > .px-nav-label').click() // klik menu Laporan Admisi
             cy.get('.px-open > .px-nav-dropdown-menu > :nth-child(2) > .xhr > .px-nav-label').click() // klik sub menu Laporan Rekapitulasi Asal SMTA
-            cy.get('h1').and('contain', 'Kontak') // assertion bahwa elemen h1 memuat tulisan Laporan Rekapitulasi Asal SMTA
+            cy.get('h1').and('contain', 'Laporan Rekapitulasi Asal SMTA') // assertion bahwa elemen h1 memuat tulisan Laporan Rekapitulasi Asal SMTA
         })
     })
 

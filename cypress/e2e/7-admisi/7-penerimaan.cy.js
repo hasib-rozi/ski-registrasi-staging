@@ -13,7 +13,7 @@ describe('Manajemen Penerimaan', () => {
         })
     })
 
-    // Membuka halaman sub menu Penerimaan
+    // Membuka laman sub menu Penerimaan
     it.only('Opens Penerimaan page', () => {
         cy.fixture("login-with-valid-credential").then(user => {
             const username = user.username

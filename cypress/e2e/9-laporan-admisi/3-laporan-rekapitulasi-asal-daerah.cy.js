@@ -30,5 +30,3 @@ describe('Manajemen Laporan Rekapitulasi Asal Daerah', () => {
     })
 
 })
-
-// regional origin recapitulation report

@@ -13,8 +13,8 @@ describe('Manajemen Tahap Penerimaan', () => {
         })
     })
 
-    // Membuka halaman sub menu Slideshow
-    it.only('Opens Tahap Penerimaan page', () => {
+    // Membuka halaman sub menu Tahap Penerimaan
+    it('Opens Tahap Penerimaan page', () => {
         cy.fixture("login-with-valid-credential").then(user => {
             const username = user.username
             const password = user.password
@@ -25,7 +25,10 @@ describe('Manajemen Tahap Penerimaan', () => {
 
             cy.get(':nth-child(7) > [href="#"] > .px-nav-label').click() // klik menu Admisi
             cy.get('.px-open > .px-nav-dropdown-menu > :nth-child(13) > .xhr > .px-nav-label').click() // klik sub menu Tahap Penerimaan
-            cy.get('h1').and('contain', 'Referensi Tahap Penerimaan') // assertion bahwa elemen h1 memuat tulisan Referensi Tahap Penerimaan
+            cy.get('h1').contains('Referensi Tahap Penerimaan').should('be.visible') // assertion bahwa elemen h1 memuat tulisan Referensi Tahap Penerimaan
+            // cy.get('h1').and('contain', 'Referensi Tahap Penerimaan') // Terjadi error karena ketika inspect element, ada pemisahan antara "Referensi Tahap" dan "Penerima"
+            // cy.get('h1').and('contain', 'Referensi Tahap')
+            // cy.get('h1').and('contain', 'Penerimaan')
         })
     })
 

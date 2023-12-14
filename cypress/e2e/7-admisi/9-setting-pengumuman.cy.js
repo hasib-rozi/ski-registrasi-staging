@@ -14,7 +14,7 @@ describe('Manajemen Setting Pengumuman', () => {
     })
 
     // Membuka halaman sub menu Setting Pengumuman
-    it.only('Opens Wawancara page', () => {
+    it.only('Opens Setting Pengumuman page', () => {
         cy.fixture("login-with-valid-credential").then(user => {
             const username = user.username
             const password = user.password
