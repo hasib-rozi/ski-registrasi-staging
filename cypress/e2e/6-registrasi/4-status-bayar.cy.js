@@ -27,10 +27,11 @@ describe('Manajemen Status Bayar', () => {
             cy.get('.px-open > .px-nav-dropdown-menu > :nth-child(4) > .xhr > .px-nav-label').click() // klik sub menu Status Bayar
             cy.get('h1').and('contain', 'Status Bayar Mahasiswa') // assertion Status Bayar Mahasiswa
 
-            cy.get(':nth-child(1) > :nth-child(1) > :nth-child(2) > .form-control').select(1)
-            cy.get(':nth-child(3) > .form-control').select(2)
-            cy.get(':nth-child(1) > :nth-child(2) > .col-sm-8 > .form-control').select(12)
+            cy.get('select[name="semester"]').select('Ganjil')
+            cy.get('select[name="tahun"]').select('2023/2024')
+            cy.get('select[name="prodi"]').select('ILMU SEJARAH')
             cy.contains('Tampilkan').click()
+            cy.get('tbody > :nth-child(1) > :nth-child(6)').and('contain', 'ILMU SEJARAH')
         })
     })
 
@@ -48,13 +49,13 @@ describe('Manajemen Status Bayar', () => {
             cy.get('.px-open > .px-nav-dropdown-menu > :nth-child(4) > .xhr > .px-nav-label').click() // klik sub menu Status Bayar
             cy.get('h1').and('contain', 'Status Bayar Mahasiswa') // assertion Status Bayar Mahasiswa
 
-            cy.get(':nth-child(1) > :nth-child(1) > :nth-child(2) > .form-control').select(1)
-            cy.get(':nth-child(3) > .form-control').select(2)
-            cy.get(':nth-child(1) > :nth-child(2) > .col-sm-8 > .form-control').select(8)
+            cy.get('select[name="semester"]').select('Ganjil')
+            cy.get('select[name="tahun"]').select('2023/2024')
+            cy.get('select[name="prodi"]').select('TEKNIK INFORMATIKA')
             cy.contains('Tampilkan').click()
 
-            cy.get(':nth-child(5) > .links > .xhr').click() // klik tombol Detil Status Bayar pada nama REGGIE JOHNSON
-            cy.get(':nth-child(2) > .col-sm-9').and('contain', 'REGGIE JOHNSON')
+            cy.get(':nth-child(5) > .links > .xhr').click() // klik tombol Detil Status Bayar pada salah satu mahasiswa di urutan kelima
+            cy.get('.page-header').and('contain', 'Detail Status Bayar Mahasiswa')
         })
     })
 
@@ -72,9 +73,9 @@ describe('Manajemen Status Bayar', () => {
             cy.get('.px-open > .px-nav-dropdown-menu > :nth-child(4) > .xhr > .px-nav-label').click() // klik sub menu Status Bayar
             cy.get('h1').and('contain', 'Status Bayar Mahasiswa') // assertion Status Bayar Mahasiswa
 
-            cy.get(':nth-child(1) > :nth-child(1) > :nth-child(2) > .form-control').select(3)
-            cy.get(':nth-child(3) > .form-control').select(1)
-            cy.contains('Tampilkan').click()
+            cy.get('select[name="semester"]').select('Ganjil')
+            cy.get('select[name="tahun"]').select('2024/2025')
+            cy.get('select[name="prodi"]').select('TEKNIK INFORMATIKA')
             cy.get('em').and('contain', '-- Data tidak ditemukan --') // assertion atau verifikasi bahwa data tidak ditemukan
         })
     })

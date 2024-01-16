@@ -14,7 +14,7 @@ describe('Manajemen Mahasiswa', () => {
     })
 
     // Mencari nama mahasiswa berdasarkan periode masuk
-    it('Searching student based on their period', () => {
+    it.only('Searching student based on their period', () => {
         cy.fixture("login-with-valid-credential").then(user => {
             const username = user.username
             const password = user.password
@@ -54,7 +54,7 @@ describe('Manajemen Mahasiswa', () => {
     })
 
     // Mencari nama mahasiswa yang datanya belum ada
-    it.only('Searching non-registered student', () => {
+    it('Searching non-registered student', () => {
         cy.fixture("login-with-valid-credential").then(user => {
             const username = user.username
             const password = user.password

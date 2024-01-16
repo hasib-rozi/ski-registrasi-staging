@@ -34,10 +34,7 @@ describe('Manajemen UKT', () => {
             cy.get('select[name="jalur"]').select('REG (Reguler)')
             cy.contains('Tampilkan').click()
 
-            // cy.get('.table-common-even > :nth-child(7)').and('contain', 'ILMU SEJARAH')
-            cy.get('.table-common-even > :nth-child(7)').should('have.text', 'ILMU SEJARAH - S1 Reguler')
-            // cy.get(':nth-child(3) > .form-control').select(1) // Pilih tahun akademik
-            // cy.get(':nth-child(3) > .form-control').select() // Pilih program studi
+            cy.get('.table-common-even > :nth-child(7)').should('have.text', 'ILMU SEJARAH - S1 Reguler') // assertion
         })
     })
 
